@@ -7,16 +7,19 @@
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
+
+-- Expand tabs
+vim.o.expandtab = true
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
+--  Remove this option if you want your OS clipboard to remain independent.     
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 
@@ -25,6 +28,9 @@ vim.opt.breakindent = true
 
 -- Save undo history
 vim.opt.undofile = true
+vim.o.undodir = vim.fn.expand('$XDG_DATA_HOME/nvim/undo')
+vim.o.undolevels = 10000
+vim.o.undoreload = 10000
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
@@ -56,4 +62,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Set completeopt to have a better completion experience
+vim.opt.completeopt = 'menuone,noselect,noinsert'
+
+-- NOTE: You should make sure your terminal supports this
+vim.opt.termguicolors = true
 -- vim: ts=2 sts=2 sw=2 et

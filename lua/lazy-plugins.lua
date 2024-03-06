@@ -23,7 +23,15 @@ require('lazy').setup {
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', opts = {},
+  -- need to call setup to initialize keybindings
+  config = function()
+      require('Comment').setup()
+  end
+},
+
+  -- vim-tmux-navigator. Defaults are ok
+  'christoomey/vim-tmux-navigator',
 
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
@@ -40,13 +48,17 @@ require('lazy').setup {
 
   require 'plugins/cmp',
 
-  require 'plugins/tokyonight',
+--  require 'plugins/tokyonight',
 
   require 'plugins/todo-comments',
 
   require 'plugins/mini',
 
   require 'plugins/treesitter',
+
+  require 'plugins.colorscheme',
+
+  require 'plugins.filetree',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
