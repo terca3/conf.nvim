@@ -50,8 +50,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -67,4 +67,8 @@ vim.opt.completeopt = 'menuone,noselect,noinsert'
 
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
+
+-- setting up special python virtual environment for Neovim
+vim.g.python3_host_prog = '/home/t/.config/.pyenv/versions/3.12.2/envs/pyneovim/bin/python3'
+
 -- vim: ts=2 sts=2 sw=2 et
