@@ -116,7 +116,7 @@ return {
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				-- rust_analyzer = {},
+				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -136,6 +136,9 @@ return {
 							analysis = {
 								-- Ignore all files for analysis to exclusively use Ruff for linting
 								ignore = { "*" },
+								-- for jumping to source code of windows specific codebases that cannot be installed on linux (eg. pywin32)
+								extraPaths = { "./external_repos" },
+								verboseOutput = true,
 							},
 						},
 					},
@@ -148,6 +151,14 @@ return {
 							client.server_capabilities.hoverProvider = false
 						end
 					end,
+					init_options = {
+						settings = {
+							-- CLI arguments for ruff
+							args = {
+								"--config=" .. vim.loop.os_homedir() .. "/.config/ruff/pyproject.toml",
+							},
+						},
+					},
 				},
 
 				lua_ls = {
